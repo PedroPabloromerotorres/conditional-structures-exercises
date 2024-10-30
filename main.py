@@ -1,32 +1,61 @@
-#escriba un programa que pida al usuario dos palabras, y que indique cuál de ellas es la más larga y por cuántas letras lo es.
+#Escriba un programa que reciba como entrada dos números, y los muestre ordenados de menor a mayor:
 
-#Palabra 1: edificio
-#Palabra 2: tren
-#La palabra edificio tiene 4 letras mas que tren.
-#Palabra 1: sol
-#Palabra 2: paralelepipedo
-#La palabra paralelepipedo tiene 11 letras mas que sol
-#Palabra 1: plancha
-#Palabra 2: lapices
-#Las dos palabras tienen el mismo largo
+#Ingrese numero: 51
+#Ingrese numero: 24
+#24 51
+#A continuación, escriba otro programa que haga lo mismo con tres números:
 
-palabra1 = input("Palabra 1: ")
+#Ingrese numero: 8
+#Ingrese numero: 1
+#Ingrese numero: 4
+#1 4 8
+#Finalmente, escriba un tercer programa que ordene cuatro números:
 
-palabra2 = input("Palabra 2: ")
+#Ingrese numero: 7
+#Ingrese numero: 0
+#Ingrese numero: 6
+#Ingrese numero: 1
+#0 1 6 7
+#Recuerde que su programa debe entregar la solución correcta para cualquier combinación de números, no sólo para los ejemplos mostrados aquí.
 
-longitud1 = len(palabra1)
+#Hay más de una manera de resolver cada ejercicio.
 
-longitud2 = len(palabra2)
 
-if longitud1 > longitud2:
+#programa para mostrar dos numeros ordenados de menor a mayor 
+numero1 = int(input("Ingrese número: "))
 
-    diferencia = longitud1 - longitud2
-    print(f"La palabra {palabra1} tiene {diferencia} letras más que {palabra2}.")
+numero2 = int(input("Ingrese número: "))
 
-elif longitud1 < longitud2:
-
-    diferencia = longitud2 - longitud1
-    print(f"La palabra {palabra2} tiene {diferencia} letras más que {palabra1}.")
+if numero1 < numero2:
+    print(numero1, numero2)
 
 else:
-    print("Las dos palabras tienen el mismo largo.")
+    print(numero2, numero1)
+
+#programa para mostrar tres numeros ordenados de menor a mayor
+numero1 = int(input("Ingrese número: "))
+
+numero2 = int(input("Ingrese número: "))
+
+numero3 = int(input("Ingrese número: "))
+
+numeros = [numero1, numero2, numero3]
+
+numeros.sort()
+
+print(" ".join(map(str, numeros)))
+
+#programa para mostrar cuatro numeros ordenados de menor a mayor 
+numero1 = int(input("Ingrese número: "))
+
+numero2 = int(input("Ingrese número: "))
+
+numero3 = int(input("Ingrese número: "))
+
+numero4 = int(input("Ingrese número: "))
+
+numeros = [numero1, numero2, numero3, numero4]
+
+numeros.sort()
+
+print(" ".join(map(str, numeros)))

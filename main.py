@@ -1,61 +1,27 @@
-#Escriba un programa que reciba como entrada dos números, y los muestre ordenados de menor a mayor:
+#Escriba un programa que determine si un caracter ingresado es letra, número, o ninguno de los dos. 
+# En caso que sea letra, determine si es mayúscula o minúscula.
 
-#Ingrese numero: 51
-#Ingrese numero: 24
-#24 51
-#A continuación, escriba otro programa que haga lo mismo con tres números:
+#Ingrese caracter: 9
+#Es numero.
+#Ingrese caracter: A
+#Es letra mayúscula.
+#Ingrese caracter: f
+#Es letra minúscula.
+#Ingrese caracter: #
+#No es letra ni número.
 
-#Ingrese numero: 8
-#Ingrese numero: 1
-#Ingrese numero: 4
-#1 4 8
-#Finalmente, escriba un tercer programa que ordene cuatro números:
+caracter = input("Ingrese carácter: ")
 
-#Ingrese numero: 7
-#Ingrese numero: 0
-#Ingrese numero: 6
-#Ingrese numero: 1
-#0 1 6 7
-#Recuerde que su programa debe entregar la solución correcta para cualquier combinación de números, no sólo para los ejemplos mostrados aquí.
+if caracter.isalpha():
 
-#Hay más de una manera de resolver cada ejercicio.
+    if caracter.isupper():
+        print("Es letra mayúscula.")
 
+    else:
+        print("Es letra minúscula.")
 
-#programa para mostrar dos numeros ordenados de menor a mayor 
-numero1 = int(input("Ingrese número: "))
-
-numero2 = int(input("Ingrese número: "))
-
-if numero1 < numero2:
-    print(numero1, numero2)
+elif caracter.isdigit():
+    print("Es número.")
 
 else:
-    print(numero2, numero1)
-
-#programa para mostrar tres numeros ordenados de menor a mayor
-numero1 = int(input("Ingrese número: "))
-
-numero2 = int(input("Ingrese número: "))
-
-numero3 = int(input("Ingrese número: "))
-
-numeros = [numero1, numero2, numero3]
-
-numeros.sort()
-
-print(" ".join(map(str, numeros)))
-
-#programa para mostrar cuatro numeros ordenados de menor a mayor 
-numero1 = int(input("Ingrese número: "))
-
-numero2 = int(input("Ingrese número: "))
-
-numero3 = int(input("Ingrese número: "))
-
-numero4 = int(input("Ingrese número: "))
-
-numeros = [numero1, numero2, numero3, numero4]
-
-numeros.sort()
-
-print(" ".join(map(str, numeros)))
+    print("No es letra ni número.")

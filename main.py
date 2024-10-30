@@ -1,44 +1,61 @@
-#Escriba un programa que entregue la edad del usuario a partir de su fecha de nacimiento:
+#El joven periodista Solarrabietas debe relatar un partido de tenis, pero no conoce las reglas del deporte. 
+# En particular, no ha logrado aprender cómo saber si un set ya terminó, y quién lo ganó.
 
-#Ingrese su fecha de nacimiento.
-#Dia: 14
-#Mes: 6
-#Año: 1948
-#Usted tiene 62 años
-#Por supuesto, el resultado entregado depende del día en que su programa será ejecutado.
+#Un partido de tenis se divide en sets. Para ganar un set, un jugador debe ganar 6 juegos, pero además debe haber ganado por lo menos dos juegos más que su rival. 
+# Si el set está empatado a 5 juegos, el ganador es el primero que llegue a 7. Si el set está empatado a 6 juegos, el set se define en un último juego, 
+# en cuyo caso el resultado final es 7-6.
 
-#Para obtener la fecha actual, puede hacerlo usando la función localtime que viene en el módulo time. 
-# Los valores se obtienen de la siguiente manera (suponiendo que hoy es 11 de marzo de 2011):
+#Sabiendo que el jugador A ha ganado m juegos, y el jugador B, n juegos, al periodista le gustaría saber:
 
-#>>> from time import localtime
-#>>> t = localtime()
-#>>> t.tm_mday
-#11
-#>>> t.tm_mon
-#3
-#>>> t.tm_year
-#2011
-#El programa debe tener en cuenta si el cumpleaños ingresado ya pasó durante este año, o si todavía no ocurre.
+#si A ganó el set, o
+#si B ganó el set, o
+#si el set todavía no termina, o
+#si el resultado es inválido (por ejemplo, 8-6 o 7-3).
+#Desarrolle un programa que solucione el problema de Solarrabietas:
 
-from time import localtime
+#Juegos ganados por A: 4
+#Juegos ganados por B: 5
+#Aun no termina
+#Juegos ganados por A: 5
+#Juegos ganados por B: 7
+#Gano B
+#Juegos ganados por A: 5
+#Juegos ganados por B: 6
+#Aun no termina
+#Juegos ganados por A: 3
+#Juegos ganados por B: 7
+#Invalido
+#Juegos ganados por A: 6
+#Juegos ganados por B: 4
+#Gano A
 
-t = localtime()
+def estado_set(juegos_a, juegos_b):
 
-dia_actual = t.tm_mday
-mes_actual = t.tm_mon
-anio_actual = t.tm_year
+    if juegos_a > 7 or juegos_b > 7 or (juegos_a == 6 and juegos_b > 6) or (juegos_b == 6 and juegos_a > 6):
+        return "Inválido"
+    
+    if juegos_a >= 6 and juegos_a >= juegos_b + 2:
+        return "Ganó A"
 
-print("Ingrese su fecha de nacimiento.")
+    elif juegos_b >= 6 and juegos_b >= juegos_a + 2:
+        return "Ganó B"
+    
+    return "Aun no termina"
 
-dia_nacimiento = int(input("Día: "))
+while True:
 
-mes_nacimiento = int(input("Mes: "))
+    try:
+        juegos_a = int(input("Juegos ganados por A: "))
 
-anio_nacimiento = int(input("Año: "))
-
-edad = anio_actual - anio_nacimiento
-
-if (mes_nacimiento > mes_actual) or (mes_nacimiento == mes_actual and dia_nacimiento > dia_actual):
-    edad -= 1
-
-print(f"Usted tiene {edad} años.")
+        juegos_b = int(input("Juegos ganados por B: "))
+        
+        resultado = estado_set(juegos_a, juegos_b)
+        print(resultado)
+        
+    except ValueError:
+        print("Por favor, ingrese un número entero válido.")
+    
+    continuar = input("¿Desea ingresar otro resultado? (s/n): ")
+    if continuar.lower() != 's':
+        
+        break

@@ -1,27 +1,74 @@
-#Escriba un programa que determine si un caracter ingresado es letra, número, o ninguno de los dos. 
-# En caso que sea letra, determine si es mayúscula o minúscula.
+#Escriba un programa que simule una calculadora básica, este puede realizar operación de suma, resta, multiplicación y división.
 
-#Ingrese caracter: 9
-#Es numero.
-#Ingrese caracter: A
-#Es letra mayúscula.
-#Ingrese caracter: f
-#Es letra minúscula.
-#Ingrese caracter: #
-#No es letra ni número.
+#El programa debe recibir como entrada 2 números reales y un operador, que puede ser +, -, * o /.
 
-caracter = input("Ingrese carácter: ")
+#La salida del programa debe ser el resultado de la operación.
 
-if caracter.isalpha():
+#Operando: 3
+#Operador: +
+#Operando: 2
+#3 + 2 = 5
+#Operando: 6
+#Operador: -
+#Operando: 7
+#6 - 7 = -1
+#Operando: 4
+#Operador: *
+#Operando: 5
+#4 * 5 = 20
+#Operando: 10
+#Operador: /
+#Operando: 4
+#10 / 4 = 2.5
+#Operando: -1
+#Operador: **
+#Operando: 4
+#-1 ** 4 = 1
 
-    if caracter.isupper():
-        print("Es letra mayúscula.")
+def calcular(operando1, operador, operando2):
+
+    if operador == '+':
+        return operando1 + operando2
+    elif operador == '-':
+
+        return operando1 - operando2
+    elif operador == '*':
+
+        return operando1 * operando2
+    elif operador == '/':
+        
+        if operando2 != 0:  
+            return operando1 / operando2
+
+        else:
+            return "Error: División por cero."
 
     else:
-        print("Es letra minúscula.")
+        return "Error: Operador no válido."
 
-elif caracter.isdigit():
-    print("Es número.")
 
-else:
-    print("No es letra ni número.")
+
+while True:
+
+    try:
+        operando1 = float(input("Operando: "))
+
+        operador = input("Operador: ")
+
+        operando2 = float(input("Operando: "))
+
+        resultado = calcular(operando1, operador, operando2)
+
+        if isinstance(resultado, str):
+            print(resultado)
+        else:
+
+            print(f"{operando1} {operador} {operando2} = {resultado}")
+
+    except ValueError:
+        print("Error: Entrada no válida. Asegúrese de ingresar números reales.")
+
+    continuar = input("¿Desea realizar otra operación? (s/n): ")
+    if continuar.lower() != 's':
+        
+        break
